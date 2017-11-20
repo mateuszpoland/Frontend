@@ -1,0 +1,27 @@
+*
+{
+	margin: 0;
+	padding: 0;
+}
+body
+{
+	font-family: 'Calibri', sans-serif;
+}
+
+h1
+{
+	font-weight: 300;
+	font-size: 4em;
+	color: #fff;
+	background-color: #071d36;
+	padding: 300px 0 500px 100px;
+	margin-bottom: 150px;
+}
+p
+{
+	width: 30%;
+	margin: 0 auto 500px auto;
+	font-size: 1.4em;
+	color: #555;
+	font-weight: 200;
+}

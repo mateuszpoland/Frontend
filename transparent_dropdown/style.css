@@ -1,0 +1,58 @@
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+body
+{
+	background: url('nature.jpg') no-repeat;
+	background-size: cover;
+	font-family: 'Lato', sans-serif;
+}
+
+ul{
+	margin-top: 0px;
+	padding: 0px;
+	list-style: none;
+	float: right;
+}
+ul li
+{
+	float: left;
+	color: white;
+	width: 200px;
+	height: 40px;
+	background-color: black;
+	text-align: center;
+	padding: 3px;
+	opacity: .8; /* przezroczystosc menu */
+	line-height: 40px; /*line height równe wysokosci bloku sprawi, że bloki nie beda na siebie "zachodziły" */
+	font-size: 20px;
+}
+
+ul li a
+{
+	text-decoration: none;
+	cursor: pointer;
+	display: block;
+}
+ul li a:hover
+{
+	background-color: green;
+
+}
+
+/*tworzac taki, kaskadowy odnośnik dostaję się do kolejnego w hierarchii elementu */
+ul li ul li
+{
+	/* chcę, by ten element domyslnie sie nie pojawiał */
+	display: none;
+}
+
+/* dosłownie - stylizuje element ul li ul li(to co wyżej), w momencie najechania kursorem na element ul li(parent) */
+
+ul li:hover ul li
+{
+	display: block;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Scroll-based fade/w jQuery</title>
+
+
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            
+            $(function() {
+                
+                // wkładam do zmiennych - cały dokument i elementy z klasą ''fade-scroll", które mają byćprzyciemnione 
+                var documentEl = $(document),
+                    fadeElem = $('.fade-scroll');
+                
+                //na całym dokumencie, zareaguj na wydarzenie 'scroll' funkcją
+                documentEl.on('scroll', function() {
+                	//.scrollTop() pobiera aktualną pozycję pionową scrolla - równa jest ilości pixeli, o które scroll jest oddalony od górnej krawedzi
+                    var currScrollPos = documentEl.scrollTop();
+                    
+                    //dla kazdego elementu z klasą "fade-scroll" wykonaj:
+                    fadeElem.each(function() {
+                    	//zapisz ten element jako zmienna, zeby mozna bylo na nim wykonywac funkcje
+                        var $this = $(this),
+                        //funkcja .offset().top - zwraca aktualne koordynaty pierwszego napotkanego elementu należącego do danej klasy, relatywnie do dokumentu - w tym wypadku od top - od góry dokumentu
+                            elemOffsetTop = $this.offset().top;
+                           //jeżeli przewinę scroll poniżej odległości danego elementu od góry strony, to dodaj property css w sposób liniowy zgodny z ponizsym równaniem
+                        if (currScrollPos > elemOffsetTop) $this.css('opacity', 1 - (currScrollPos-elemOffsetTop)/600);
+                    }); 
+                });
+                
+            });
+        
+        </script>
+
+</head>
+<body>
+
+	<h1 class="fade-scroll">FADE ME AWAY..</h1>
+	<p class="fade-scroll">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris orci nunc, feugiat vitae lectus sed, eleifend porttitor risus. Curabitur ultrices orci sed felis porttitor semper. Aliquam erat volutpat. Praesent blandit justo leo, quis faucibus orci feugiat quis. Nunc sed scelerisque quam. Mauris sed lobortis sapien, dignissim feugiat ipsum. In vel quam sit amet est pretium malesuada ac at dolor. Donec in libero euismod libero eleifend vestibulum. Cras quam lectus, sodales id sollicitudin a, imperdiet id lectus. Nam viverra lectus vel eros laoreet eleifend. Phasellus eget sagittis nisl. Donec velit nunc, blandit tempus arcu ut, interdum mollis purus.</p>
+
+
+
+
+
+</body>
+</html>

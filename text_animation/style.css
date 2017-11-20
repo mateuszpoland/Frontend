@@ -1,0 +1,56 @@
+*
+{
+	margin: 0;
+	padding: 0;
+}
+body
+{
+	background-color: rgb(17, 104,105);
+}
+.text-animation
+{
+	list-style: none;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+.text-animation li
+{
+	/*tekst ma sie wyswietlac w jednej linii*/
+	display: inline-block;
+	/* za pomoca margin zwieksze tu odstep miedzy literami */
+	margin-right: 5px;
+	font-family: sans-serif;
+	font-weight: 300;
+	font-size: 5em;
+	color: #70e1e2;
+	opacity: 1;
+	/* ten parametr bedzie odpowiadal za szybkosc animacji */
+	transition: all 2.5s ease;
+}
+/* ostatni element li */
+.text-animation li:last-child
+{
+	/* chce zlikwidowac margines po ostatniej literze */
+	margin-right: 0;
+}
+/* cała klasa nazywa sie "text-animation hidden", tyle, że moge rozbic te klase na części 
+najpierw stylizujac text-animation, a pozniej doklejajac druga czesc .hidden */
+/* za pomocą "hidden" ukrywam napis, co bedzie poczatkową fazą animacji */
+.text-animation.hidden
+{
+	opacity: 0;
+}
+/*każdą ukrytą litere przesuwam wzdłuz osi X i Y o odpowiednia ilosc pikseli - chce, żeby litery startowały z różnych miejsc
+ale beda sie układalły w kształt trójkątów  */
+.text-animation.hidden li:nth-child(1) { transform: translateX(-200px) translateY(-200px); }
+.text-animation.hidden li:nth-child(2) { transform: translateX(20px) translateY(100px); }
+.text-animation.hidden li:nth-child(3) { transform: translateX(-150px) translateY(-80px); }
+.text-animation.hidden li:nth-child(4) { transform: translateX(10px) translateY(-200px); }
+.text-animation.hidden li:nth-child(5) { transform: translateX(-300px) translateY(200px); }
+.text-animation.hidden li:nth-child(6) { transform: translateX(20px) translateY(-20px); }
+.text-animation.hidden li:nth-child(7) { transform: translateX(30px) translateY(200px); }
+.text-animation.hidden li:nth-child(8) { transform: translateX(20px) translateY(100px); }
+.text-animation.hidden li:nth-child(9) { transform: translateX(-150px) translateY(-80px); }
+.text-animation.hidden li:nth-child(10) { transform: translateX(10px) translateY(-200px); }

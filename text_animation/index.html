@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Text Animation || CSS & jQuery</title>
+</head>
+<body>
+<!-- napis bedzie skadał sie z pojedynczych liter w tagach ul li -->
+	<ul class="text-animation hidden">
+		<li>T</li>
+		<li>O</li>
+		<li>P</li>
+		<li></li>
+		<li>P</li>
+		<li>L</li>
+		<li>A</li>
+		<li>Y</li>
+		<li>E</li>
+		<li>R</li>
+	</ul>
+<!--skrypt oblugujacy animację -->
+	<script type="text/javascript">
+	//po pierwsze funkcja wywołą sie od razu po załadowaniu
+		$(function(){
+			//zdejmujemy klasę "hidden" i w ciągu czasu "500" wkonujemy animacje przejscia do klasy podstawowej bez 'hidden'
+			setTimeout(function(){
+				$('.text-animation').removeClass('hidden');
+			}, 500);
+		});
+	</script>
+</body>
+</html>
