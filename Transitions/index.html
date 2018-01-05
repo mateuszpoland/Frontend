@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JS-triggered animations</title>
+
+	<style type="text/css">
+	#box1{
+		background: #9DCEFF;
+		width: 400px;
+		height: 200px;
+		
+		
+		/*overflow: hidden is a great property when using 
+		transitions, as it hides al elements in the div  when div changes size due to transition */
+		overflow: hidden;
+	}
+	#box1 p{
+		text-align: center;
+	}
+	.wrap {
+		width: 80%;
+		margin: auto;
+	}
+
+	#box2 {
+		background: #9DCEFF;
+		width: 400px;
+		height: 200px;
+		position: absolute;
+		top: 300px;
+		left: -400px; 
+	}
+
+	</style>
+
+	
+</head>
+<body>
+
+<!-- trigger transition using JS code with onclick() property -->
+<button id="button2" onclick="changeBackground('box1', '#f0f');">Change color!</button>
+
+<button id="button1" onclick="fadeOut('box1');">Fade out</button>
+
+<button id="button3" onclick="slideClosed('box1',1);">Close/Open</button>
+
+<div id="box1">
+	<div class="wrap">
+		<p>Register NOW:</p>
+		<form>
+			<label for="name">Name:</label>
+			<input type="text" placeholder="put your name.." required="true"></input>
+			<br/>
+
+			<label for="name">e-mail:</label>
+			<input type="email" placeholder="put your email.." required="true"></input>
+
+			<br/>
+			<input type="submit"></input>
+		</form>
+	</div>
+</div>
+
+<button onclick="slideIn('box2');">Show us something!</button>
+<div id="box2">
+	
+</div>
+
+
+
+<script type="text/javascript">
+		function changeBackground(element, color){
+			var elem = document.getElementById(element);
+			//before manipulating elem style, if it needs to be done with some sort of animation, I need to set transition first
+			//background - target element that will be aninted, set duration (1.0s) and offset - delay which is 0s, meaning animation is triggered right away
+			elem.style.transition = "background 1.0s linear 0s";
+			elem.style.background = color;
+		}
+
+		function fadeOut(elem){
+			var elem = document.getElementById(elem);
+
+			elem.style.transition = "opacity 0.7s ease-in 0s";
+			elem.style.opacity = 0.2;
+		}
+		
+		var elemHeights  = ["0px","200px","300px"];
+
+		function slideClosed(el, elindex){
+			var elem = document.getElementById(el);
+			var style = window.getComputedStyle(elem);
+    		var lastHeight = style.getPropertyValue('height');
+			elem.style.transition = "height 0.5s linear 0s";
+		
+			
+			if(lastHeight > "0px"){
+				elem.style.height = 0;
+				setTimeout(function(){
+					elem.style.border = "none";
+
+				}, 500);
+				
+				
+			} else {
+			
+				elem.style.height = elemHeights[elindex];
+			
+				setTimeout(function(){
+					elem.style.transition = 'border 0.1s linear 0s';
+					elem.style.border = "2px solid blue";
+					}, 500);
+	
+				
+			}
+			
+			
+
+		}
+
+		function slideIn(elem){
+
+			var elem = document.getElementById(elem);
+			elem.style.transition = 'left 0.5s ease-in-out 0s';
+			elem.style.left = '0px;'
+
+		}
+
+	</script>
+</body>
+</html>
